@@ -1,0 +1,12 @@
+/vendor
+/.idea
+/.vscode
+/.settings
+/.buildpath
+/.project
+composer.phar
+composer.lock
+.DS_Store
+Thumbs.db
+.phpunit.result.cache
+nginx.htaccess
