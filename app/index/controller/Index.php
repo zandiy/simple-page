@@ -1,10 +1,13 @@
 <?php
 namespace app\index\controller;
 
+use think\Template;
+
 class Index
 {
     public function index()
     {
-        echo "index page";
+        $tpl = new Template(config('template'));
+        $tpl->fetch('index');
     }
 }
