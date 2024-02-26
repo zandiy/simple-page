@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>模板管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__LAYMINI__/lib/layui-v2.9.6/css/layui.css" media="all">
+    <link rel="stylesheet" href="__LAYMINI__/css/public.css" media="all">
+    <link rel="stylesheet" href="__LAYMINI__/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <style>
+        .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+        .layui-card{border-radius: 5px;}
+        .view-item{border: 1px solid #ccc;border-radius: 5px;overflow: hidden;}
+        .view-img{overflow: hidden;padding-top: 80%;background-repeat: no-repeat; background-position: center; background-size: cover;}
+        .view-title{margin: 15px 15px 0;height: 50px;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;}
+        .view-set{margin: 10px 15px 15px;display: flex;align-items: center; justify-content: space-between;}
+        .install{color: #1e9fff;}
+        .uninstall{color: #ff5722;}
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layui-card">
+        <div class="layui-card-header">本地模板</div>
+        <div class="layui-card-body">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                    <div class="view-item">
+                        <div class="view-img" style="background-image: url('/static/images/view.png');"></div>
+                        <div class="view-title">
+                            蓝色风格产品设计师个人简历网页模板蓝色风格产品设计师个人简历网页模板
+                        </div>
+                        <div class="view-set">
+                            <div>
+                                <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
+                                <a><i class="fa fa-user"></i> mister.xin</a>
+                            </div>
+                            <div>
+                                <a layuimini-content-href="template/setting/defaults" data-title="模板设置" target="_self" href="javascript:;" style="color: #16b777;"><i class="fa fa-cog"></i> 设置</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                    <div class="view-item">
+                        <div class="view-img" style="background-image: url('/static/images/view.png');"> </div>
+                        <div class="view-title">
+                            蓝色风格产品设计师个人简历网页模板
+                        </div>
+                        <div class="view-set">
+                            <div>
+                                <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
+                                <a><i class="fa fa-user"></i> mister.xin</a>
+                            </div>
+                            <div>
+                                <a class="install">安装</a>
+                                <a class="uninstall">卸载</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                    <div class="view-item">
+                        <div class="view-img" style="background-image: url('/static/images/view.png');"> </div>
+                        <div class="view-title">
+                            蓝色风格产品设计师个人简历网页模板蓝色风格产品设计师个人简历网页模板
+                        </div>
+                        <div class="view-set">
+                            <div>
+                                <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
+                                <a><i class="fa fa-user"></i> mister.xin</a>
+                            </div>
+                            <div>
+                                <a class="install">安装</a>
+                                <a class="uninstall">卸载</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
+                    <div class="view-item">
+                        <div class="view-img" style="background-image: url('/static/images/view.png');"> </div>
+                        <div class="view-title">
+                            蓝色风格产品设计师个人简历网页模板蓝色风格产品设计师个人简历网页模板
+                        </div>
+                        <div class="view-set">
+                            <div>
+                                <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
+                                <a><i class="fa fa-user"></i> mister.xin</a>
+                            </div>
+                            <div>
+                                <a class="install">安装</a>
+                                <a class="uninstall">卸载</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+<script src="__LAYMINI__/lib/layui-v2.9.6/layui.js" charset="utf-8"></script>
+<script src="__LAYMINI__/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'miniTab'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            ,miniTab = layui.miniTab;
+        miniTab.listen();
+        //监听提交
+        form.on('submit(setting)', function (data) {
+            parent.layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            });
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

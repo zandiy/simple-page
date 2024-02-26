@@ -29,7 +29,7 @@ class Index extends Base
             ['站点设置','gear','setting',[]],
             ['模板管理','laptop','template',[]],
             ['插件管理','plug','plugin',[]],
-            ['在线商店','cloud-download','store','',[]],
+            ['在线拓展','cloud-download','store','',[]],
         ];
         $menuInfo = [
             'title'=>'常规管理',
