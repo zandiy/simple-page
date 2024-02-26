@@ -16,8 +16,8 @@
         .view-img{overflow: hidden;padding-top: 80%;background-repeat: no-repeat; background-position: center; background-size: cover;}
         .view-title{margin: 15px 15px 0;height: 50px;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;}
         .view-set{margin: 10px 15px 15px;display: flex;align-items: center; justify-content: space-between;}
-        .install{color: #1e9fff;}
-        .uninstall{color: #ff5722;}
+        .install{color: #1e9fff;cursor: pointer;}
+        .uninstall{color: #ff5722;cursor: pointer;}
     </style>
 </head>
 <body>
@@ -28,75 +28,45 @@
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                     <div class="view-item">
-                        <div class="view-img" style="background-image: url('/static/images/view.png');"></div>
+                        <div class="view-img" style="background-image: url('/template/{$on.id}/view.png');"></div>
                         <div class="view-title">
-                            蓝色风格产品设计师个人简历网页模板蓝色风格产品设计师个人简历网页模板
+                            {$on.title}
                         </div>
                         <div class="view-set">
                             <div>
                                 <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
-                                <a><i class="fa fa-user"></i> mister.xin</a>
+                                <a><i class="fa fa-user"></i> {$on.author}</a>
                             </div>
                             <div>
+                                {if $on.setting}
                                 <a layuimini-content-href="template/setting/defaults" data-title="模板设置" target="_self" href="javascript:;" style="color: #16b777;"><i class="fa fa-cog"></i> 设置</a>
+                                {else /}
+
+                                {/if}
                             </div>
                         </div>
                     </div>
                 </div>
+                {foreach $views as $key=>$vo } 
                 <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
                     <div class="view-item">
-                        <div class="view-img" style="background-image: url('/static/images/view.png');"> </div>
+                        <div class="view-img" style="background-image: url('/template/{$vo.id}/view.png');"></div>
                         <div class="view-title">
-                            蓝色风格产品设计师个人简历网页模板
+                            {$vo.title}
                         </div>
                         <div class="view-set">
                             <div>
                                 <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
-                                <a><i class="fa fa-user"></i> mister.xin</a>
+                                <a><i class="fa fa-user"></i> {$vo.author}</a>
                             </div>
                             <div>
-                                <a class="install">安装</a>
-                                <a class="uninstall">卸载</a>
+                                <span class="install set-btn" data-view="{$vo.id}" data-event="install">安装</span>
+                                <span class="uninstall set-btn" data-view="{$vo.id}" data-event="uninstall">卸载</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
-                    <div class="view-item">
-                        <div class="view-img" style="background-image: url('/static/images/view.png');"> </div>
-                        <div class="view-title">
-                            蓝色风格产品设计师个人简历网页模板蓝色风格产品设计师个人简历网页模板
-                        </div>
-                        <div class="view-set">
-                            <div>
-                                <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
-                                <a><i class="fa fa-user"></i> mister.xin</a>
-                            </div>
-                            <div>
-                                <a class="install">安装</a>
-                                <a class="uninstall">卸载</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-col-xs6 layui-col-sm4 layui-col-md3">
-                    <div class="view-item">
-                        <div class="view-img" style="background-image: url('/static/images/view.png');"> </div>
-                        <div class="view-title">
-                            蓝色风格产品设计师个人简历网页模板蓝色风格产品设计师个人简历网页模板
-                        </div>
-                        <div class="view-set">
-                            <div>
-                                <a href=""><i class="fa fa-file-text-o"></i> 详情</a>
-                                <a><i class="fa fa-user"></i> mister.xin</a>
-                            </div>
-                            <div>
-                                <a class="install">安装</a>
-                                <a class="uninstall">卸载</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/foreach}
             </div>
         </div>
       </div>
@@ -107,8 +77,16 @@
     layui.use(['form', 'miniTab'], function () {
         var form = layui.form
             , layer = layui.layer
+            , $ = layui.$
             ,miniTab = layui.miniTab;
         miniTab.listen();
+        $('.set-btn').on('click',function(){
+            let element = $(this),
+                tplname = element.data('view'),
+                event = element.data('event');
+            console.log(tplname,event)
+        })
+
         //监听提交
         form.on('submit(setting)', function (data) {
             parent.layer.alert(JSON.stringify(data.field), {

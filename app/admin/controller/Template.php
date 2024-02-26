@@ -8,6 +8,27 @@ class Template extends Base
 {
     public function index()
     {
+
+        $dir = get_path('template'); // 替换为你的文件夹路径
+
+        $directories = [];
+        foreach (scandir($dir) as $entry) {
+            if ($entry == '.' || $entry == '..') continue;
+            $entryPath = $dir . '/' . $entry;
+            if (is_dir($entryPath) && is_file($entryPath.'/config.php')) {
+                $tplconfig  =   include_once($entryPath.'/config.php');
+                $tplconfig['setting'] = 0;
+                if(class_exists('template\\'.$entry.'\\Setting')) $tplconfig['setting'] = 1;
+                if($tplconfig['id'] == config('app.tpl')){
+                    $on = $tplconfig;
+                    continue;
+                }
+                $directories[$entry] = $tplconfig;
+                
+            }
+        }
+        $this->tpl->assign(['on'=>$on,'views'=>$directories]);
+
         $this->tpl->fetch('template-list');
     }
 
