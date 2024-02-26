@@ -22,4 +22,9 @@ class Base
         // return strtolower(end(explode('/',$method)));
         // return str_replace('::','/',strtolower(end(explode('\\',$method))));
     }
+
+    // public function __call($name, $arguments)
+    // {
+    //     $this->tpl->fetch($name);
+    // }
 }
